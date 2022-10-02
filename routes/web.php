@@ -36,6 +36,11 @@ Route::middleware('auth')->prefix('account')->group(function () {
   Route::get('apply-job', [AccountController::class, 'applyJobView'])->name('account.applyJob');
   Route::post('apply-job', [AccountController::class, 'applyJob'])->name('account.applyJob');
 
+  //
+  //applyjobs
+  Route::get('upload-qualifications', [AccountController::class, 'uploadQualificationsView'])->name('account.uploadQualificationsView');
+  Route::post('upload-qualifications', [AccountController::class, 'uploadQualifications'])->name('account.uploadQualifications');
+
   //Admin Role Routes
   Route::group(['middleware' => ['role:admin']], function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('account.dashboard');

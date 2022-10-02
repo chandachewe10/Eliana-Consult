@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\files;
+use App\Models\file_items;
 
 class AccountController extends Controller
 {
@@ -40,7 +42,7 @@ class AccountController extends Controller
         if ($this->hasApplied(auth()->user(), $request->post_id)) {
             Alert::toast('You have already applied for this job!', 'success');
             return redirect()->route('post.show', ['job' => $request->post_id]);
-        }else if(!auth()->user()->hasRole('user')){
+        } elseif (!auth()->user()->hasRole('user')) {
             Alert::toast('You are a employer! You can\'t apply for the job! ', 'error');
             return redirect()->route('post.show', ['job' => $request->post_id]);
         }
@@ -52,7 +54,7 @@ class AccountController extends Controller
 
     public function applyJob(Request $request)
     {
-        $application = new JobApplication;
+        $application = new JobApplication();
         $user = User::find(auth()->user()->id);
 
         if ($this->hasApplied($user, $request->post_id)) {
@@ -108,6 +110,53 @@ class AccountController extends Controller
         }
         return redirect()->back();
     }
+
+
+    public function uploadQualificationsView()
+    {
+        return view('account.uploadQualificationsView');
+    }
+
+
+    public function uploadQualifications(Request $request)
+    {
+        if ($request->hasFile('filename')) {
+            $allowedfileExtension=['pdf','docx'];
+            $files = $request->file('filename');
+            foreach ($files as $file) {
+               
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+
+                $check=in_array($extension, $allowedfileExtension);
+
+                if ($check) {
+                    $items= files::create([
+                        $request->status_upload
+                    ]);
+                    
+                        $filename = $file->store('qualifications');
+                        file_items::create([
+                        'file_id' => $items->id,
+                        'filename' => $filename
+                        ]);
+                  
+                    
+                }
+
+                elseif(!$check){
+                    Alert::toast('Something went wrong! Invalid File Format', 'warning');
+                    return redirect()->back();
+                }
+               
+            }
+            
+    Alert::toast('All files uploaded successfully!', 'info');
+    return redirect()->back();
+
+        }
+    }
+
 
     public function deactivateView()
     {

@@ -37,6 +37,11 @@
         <i class="fas fa-user-shield"></i> Become an employer
       </a>
     </li>
+    <li class="list-group-item list-group-item-action {{ request()->segment(2) == 'upload-qualifications' ? 'active': ''}}">
+      <a href="{{route('account.uploadQualificationsView')}}" class="account-nav-link">
+        <i class="fas fa-copy"></i> Upload Qualifications
+      </a>
+    </li>
     @endrole
     <li class="list-group-item list-group-item-action {{ request()->segment(2) == 'change-password' ? 'active': ''}}">
       <a href="{{route('account.changePassword')}}" class="account-nav-link">
