@@ -21,24 +21,16 @@ class AdminController extends Controller
         $permissions = Permission::all()->pluck('name');
         $rolesHavePermissions = Role::with('permissions')->get();
 
-        $dashCount = [];
-        $dashCount['author'] = User::role('author')->count();
-        $dashCount['user'] = User::role('user')->count();
-        $dashCount['post'] = Post::count();
-        $dashCount['livePost'] = Post::where('deadline', '>', Carbon::now())->count();
+       
 
         return view('account.dashboard')->with([
             'companyCategories' => CompanyCategory::all(),
-            'dashCount' => $dashCount,
-            'recentAuthors' => $authors,
-            'roles' => $roles,
-            'permissions' => $permissions,
-            'rolesHavePermissions' => $rolesHavePermissions,
+           
         ]);
     }
     public function viewAllUsers()
     {
-        $users = User::select('id', 'name', 'email', 'created_at')->latest()->paginate(30);
+        $users = User::select('id', 'name', 'email', 'created_at')->latest()->paginate(10);
         return view('account.view-all-users')->with([
             'users' => $users
         ]);

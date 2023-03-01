@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PostController::class, 'index'])->name('post.index');
 Route::get('/job/{job}', [PostController::class, 'show'])->name('post.show');
 Route::get('employer/{employer}', [AuthorController::class, 'employer'])->name('account.employer');
+Route::post('refer-someone', [AccountController::class, 'referSomeone'])->name('account.referSomeone_public');
 
 //return vue page
 Route::get('/search', [JobController::class, 'index'])->name('job.index');

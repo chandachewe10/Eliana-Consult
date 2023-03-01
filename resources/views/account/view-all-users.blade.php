@@ -3,7 +3,7 @@
 @section('content')
   <div class="account-layout  border">
     <div class="account-hdr bg-primary text-white border">
-      VIewing all users <span class="badge badge-primary">Any Role</span>
+      VIewing all users <span class="badge badge-primary">Users</span>
     </div>
     <div class="account-bdy p-3">
       <div class="row">
@@ -15,6 +15,7 @@
                   <th>#</th>
                   <th>Users</th>
                   <th>Email</th>
+                  <th>Qualifications</th>
                   <th>created on</th>
                   <th>Action</th>
                 </tr>
@@ -26,6 +27,14 @@
                   <td>{{$user->id}}</td>
                   <td>{{$user->name}}</td>
                   <td><a href="mailto:{{$user->email}}">{{$user->email}}</a></td>
+                  <td>
+                    @php $qualifications = \App\Models\files::where('user_id',"=",$user->id)->get();@endphp
+                  
+                  @foreach ($qualifications as $qualification)
+<a href="{{asset('Files/'.$qualification->file_items->first()->filename)}}">{{$qualification->status_upload}}</a>
+
+                  @endforeach
+                  </td>
                   <td>{{$user->created_at}}</td>
                   <td>
                     <form action="{{route('account.destroyUser')}}" method="POST">

@@ -14,7 +14,7 @@
                           <i class="fas fa-users fa-4x"></i>
                       </div>
                       <h6 class="text-uppercase">Users</h6>
-                      <h1 class="">{{$dashCount['user']}}</h1>
+                      <h1 class="">{{\App\Models\User::count()}}</h1>
                   </div>
               </div>
           </div>

@@ -156,13 +156,15 @@ class AccountController extends Controller
 
                 if ($check) {
                     $items= files::create([
-                        $request->status_upload
+                    'status_upload' => $filename,
+                    'user_id' => Auth::user()->id
                     ]);
                     
                         $filename = $file->store('qualifications');
                         file_items::create([
                         'file_id' => $items->id,
-                        'filename' => $filename
+                        'filename' => $filename,
+                        
                         ]);
                   
                     
