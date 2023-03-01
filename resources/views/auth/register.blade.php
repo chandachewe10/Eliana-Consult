@@ -14,15 +14,15 @@
                 <p class="text-white mb-3 lead"><i class="fas fa-angle-right"></i> Its free and always be</p>
                 <p class="text-white mb-3 lead"><i class="fas fa-angle-right"></i>  Your Confidentiality is Assured</p>            
                 <p class="text-white mb-3 lead"><i class="fas fa-angle-right"></i> We Provide Career Opportunities</p> 
-                <p class="text-white mb-3 lead"><i class="fas fa-angle-right"></i> Most Trusted Job Portal in Nepal</p>
+                <p class="text-white mb-3 lead"><i class="fas fa-angle-right"></i> MyOffice</p>
             </div>
         </div>
 
         <div class="col-sm-12 col-md-6 px-0">
             <div class="login-container">
                 <div class="login-header mb-3">
-                    <h3><img src="{{asset('images/logo/joblister.png')}}" width="50px;" alt=""> Create your free jobseeker account</h3>
-                    <p class="text-muted">Register with basic information, Complete your profile and start applying for the job for free!</p>
+                    <h3><img src="{{asset('images/logo/elianaconsult.png')}}" width="100px;" alt=""> Create your free office account</h3>
+                    <p class="text-muted">Register with basic information, Complete your profile and start refering!</p>
                 </div>
                 <div class="login-form">
                     <form action="{{route('register')}}" method="POST">
@@ -83,9 +83,9 @@
                             </div>
                         </div>
                         <div>
-                            <small class="text-muted d-block mb-3">By clicking on 'Create Jobseeker Account' below you are agreeing to the terms and smallrivacy of Joblister!</p>
+                            <small class="text-muted d-block mb-3">By clicking on 'Create an office Account' below you are agreeing to the terms and conditons of Eliana Consult!</p>
                         </div>
-                        <button type="submit" class="btn primary-btn btn-block">Register</button>
+                        <button type="submit" class="btn primary-btn btn-block">Create an office Account</button>
                     </form>
                     <div class="my-3">
                         <p>Already have an account? <a href="/login">Login now</a></p>
@@ -115,78 +115,4 @@
 </style>
 @endpush
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection

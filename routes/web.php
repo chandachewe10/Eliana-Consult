@@ -50,33 +50,20 @@ Route::middleware('auth')->prefix('account')->group(function () {
     Route::get('category/{category}/edit', [CompanyCategoryController::class, 'edit'])->name('category.edit');
     Route::post('category', [CompanyCategoryController::class, 'store'])->name('category.store');
     Route::put('category/{id}', [CompanyCategoryController::class, 'update'])->name('category.update');
-    Route::delete('category/{id}', [CompanyCategoryController::class, 'destroy'])->name('category.destroy');
+    Route::get('category/{id}', [CompanyCategoryController::class, 'destroy'])->name('category.destroy');
+    Route::delete('referals/{id}', [CompanyCategoryController::class, 'denie'])->name('referal.denie');
+    Route::get('referals/{id}', [CompanyCategoryController::class, 'approve'])->name('referal.approve');
+    Route::get('check-referal-admin', [AccountController::class, 'checkReferal'])->name('account.check-referal-admin');
+
+    
+
   });
 
-  //Author Role Routes
-  Route::group(['middleware' => ['role:author']], function () {
-    Route::get('author-section', [AuthorController::class, 'authorSection'])->name('account.authorSection');
-
-    Route::get('job-application/{id}', [JobApplicationController::class, 'show'])->name('jobApplication.show');
-    Route::delete('job-application', [JobApplicationController::class, 'destroy'])->name('jobApplication.destroy');
-    Route::get('job-application', [JobApplicationController::class, 'index'])->name('jobApplication.index');
-
-    Route::get('post/create', [PostController::class, 'create'])->name('post.create');
-    Route::post('post', [PostController::class, 'store'])->name('post.store');
-    Route::get('post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
-    Route::put('post/{post}', [PostController::class, 'update'])->name('post.update');
-    Route::delete('post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
-
-    Route::get('company/create', [CompanyController::class, 'create'])->name('company.create');
-    Route::put('company/{id}', [CompanyController::class, 'update'])->name('company.update');
-    Route::post('company', [CompanyController::class, 'store'])->name('company.store');
-    Route::get('company/edit', [CompanyController::class, 'edit'])->name('company.edit');
-    Route::delete('company', [CompanyController::class, 'destroy'])->name('company.destroy');
-  });
-
+  
   //User Role routes
   Route::group(['middleware' => ['role:user']], function () {
-    Route::get('become-employer', [AccountController::class, 'becomeEmployerView'])->name('account.becomeEmployer');
-    Route::post('become-employer', [AccountController::class, 'becomeEmployer'])->name('account.becomeEmployer');
+    Route::get('refer-someone-view', [AccountController::class, 'referSomeoneView'])->name('account.referSomeoneView');
+    Route::post('refer-someone', [AccountController::class, 'referSomeone'])->name('account.referSomeone');
+    Route::get('check-referal', [AccountController::class, 'checkReferal'])->name('account.check-referal');
   });
 });

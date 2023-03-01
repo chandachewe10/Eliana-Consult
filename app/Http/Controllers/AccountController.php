@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\files;
 use App\Models\file_items;
+use App\Models\Referals;
 
 class AccountController extends Controller
 {
@@ -24,17 +25,40 @@ class AccountController extends Controller
         return view('account.user-account');
     }
 
-    public function becomeEmployerView()
+    public function referSomeoneView()
     {
-        return view('account.become-employer');
+        return view('account.refer-someone');
     }
 
-    public function becomeEmployer()
+    public function referSomeone(Request $request)
     {
-        $user = User::find(auth()->user()->id);
-        $user->removeRole('user');
-        $user->assignRole('author');
-        return redirect()->route('account.authorSection');
+
+        $request->validate([
+            'client_name' => 'required|string',
+            'client_email' => 'required|email|unique:referals',
+            'client_phone' => 'required|numeric',
+            'client_address' => 'required|string',
+            'client_required_service' => 'required|string',
+            'attachment' => 'nullable|mimes:pdf,jpg,png,docx',
+        ]);
+
+
+
+        $user = new Referals;
+        $user->user_id = Auth::user()->id;
+        $user->client_name = $request->client_name;  
+        $user->client_email = $request->client_email; 
+        $user->client_phone = $request->client_phone; 
+        $user->client_address = $request->client_address; 
+        $user->client_required_service = $request->client_required_service; 
+        if($request->hasFile('attachment')){
+            $file = $request->file('filename');
+            $filename = $file->store('referal_attachments');  
+            $user->attachment = $filename; 
+        }
+       $user->save(); 
+       Alert::toast('Your referal has been submitted successfully!', 'success');
+       return redirect()->back();
     }
 
     public function applyJobView(Request $request)
@@ -151,11 +175,26 @@ class AccountController extends Controller
                
             }
             
-    Alert::toast('All files uploaded successfully!', 'info');
+    Alert::toast('All files uploaded successfully!', 'success');
     return redirect()->back();
 
         }
     }
+
+
+
+
+    public function checkReferal()
+    {
+       
+            return view('account.added-referals',[
+             'referals' => Referals::latest()->get()  
+            ]);
+        }
+    
+
+
+
 
 
     public function deactivateView()
