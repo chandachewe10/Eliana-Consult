@@ -39,10 +39,10 @@ class AccountController extends Controller
             'client_phone' => 'required|numeric',
             'client_address' => 'required|string',
             'client_required_service' => 'required|string',
-            'attachment' => 'nullable|mimes:pdf,jpg,png,docx',
+            'attachment' => 'nullable|mimes:pdf,jpg,png,docx|max:5120', //Maximum file size to be 5MB
         ]);
 
-
+        
 
         $user = new Referals;
         $user->user_id = Auth::user()->id;
@@ -52,7 +52,7 @@ class AccountController extends Controller
         $user->client_address = $request->client_address; 
         $user->client_required_service = $request->client_required_service; 
         if($request->hasFile('attachment')){
-            $file = $request->file('filename');
+            $file = $request->file('attachment');
             $filename = $file->store('referal_attachments');  
             $user->attachment = $filename; 
         }
