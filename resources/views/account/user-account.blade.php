@@ -18,7 +18,7 @@
                             <p>User</p> 
                             @endrole
                             @role('admin')
-                            <p>Author (Job Lister) <i class="fas fa-pen-square"></i></p> 
+                            <p>ADMIN ({{config('app.name')}}) <i class="fas fa-pen-square"></i></p> 
                             @endrole
                         </div>
                     </div>

@@ -128,7 +128,7 @@ $services = \App\Models\CompanyCategory::get();
 
 @endphp
 <select name="client_required_service" class="form-control" name="client_required_service" class="@error('client_required_service') is-invalid @enderror">
-<option value="">Select Guidance</option>
+<option value="">Select Service Type</option>
       @foreach($services as $service)
       <option value="{{$service->category_name}}">{{$service->category_name}}</option>
      @endforeach
@@ -155,14 +155,14 @@ $services = \App\Models\CompanyCategory::get();
 				<br>
 					<div class="col-md-7 wrap-about ftco-animate align-items-stretch d-flex">
 						<div class="bg-white p-5">
-							<h2 class="mb-4">Eliana-consult<br>A Consulting Agency</h2>
+							<h2 class="mb-4">Eliana-consult<br></h2>
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="services">
 										<div class="icon mt-2 d-flex align-items-center"><span class="flaticon-collaboration"></span></div>
 										<div class="text media-body">
 											<h3>Taxation </h3>
-											<p>Company/Business registration, returns and Tax Account Reconciliation.</p>
+											<p>Efficient tax planning, aims in making the process as efficient as possible.</p>
 										</div>
 									</div>
 									<div class="services">
@@ -173,6 +173,8 @@ $services = \App\Models\CompanyCategory::get();
 										</div>
 									</div>
 								</div>
+
+
 								<div class="col-lg-6">
 									<div class="services">
 										<div class="icon mt-2"><span class="flaticon-search-engine"></span></div>
@@ -188,8 +190,12 @@ $services = \App\Models\CompanyCategory::get();
 											<p>provides investment products, advice, and/or planning to investors.</p>
 										</div>
 									</div>
-								</div>
+								</div>							
 							</div>
+
+
+
+							
 						</div>
 					</div>
 				</div>

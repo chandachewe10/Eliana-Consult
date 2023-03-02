@@ -58,8 +58,7 @@
             <div class="login-poster">
                 {{-- <img src="" alt=""> --}}
                 <h2 class="mb-3 slogon">Mark yourself as <br>Actively Job seeker</h2>
-                <p class="text-white lead">We have enabled this feature targeting superheros
-                    who lost their jobs during this crisis.</p>
+                <p class="text-white lead">Login to your office and start refering clients.</p>
             </div>
         </div>
     </div>
