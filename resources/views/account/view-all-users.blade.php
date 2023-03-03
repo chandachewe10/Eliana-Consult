@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-sm-12 col-md-12">
           <div class="table-responsive pt-3">
-            <table class="table table-hover table-striped small">
+            <table class="table table-hover table-striped small" >
               <thead>
                 <tr>
                   <th>#</th>
@@ -31,7 +31,7 @@
                     @php $qualifications = \App\Models\files::where('user_id',"=",$user->id)->get();@endphp
                   
                   @foreach ($qualifications as $qualification)
-<a href="{{asset('Files/'.$qualification->file_items->first()->filename)}}">{{$qualification->status_upload}}</a>
+<a href="{{asset('Files/'.$qualification->file_items->first()->filename)}}" style="color: royalblue;">{{$qualification->status_upload}}</a>
 
                   @endforeach
                   </td>
@@ -66,3 +66,8 @@
     </div>
   </div>
 @endSection
+
+
+
+
+

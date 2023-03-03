@@ -69,7 +69,7 @@
 <script>   
 $(document).ready( function () {
     $.noConflict();
-    $('#active-loans').DataTable({
+    $('#referals').DataTable({
        
         dom: 'Bfrtip',
      

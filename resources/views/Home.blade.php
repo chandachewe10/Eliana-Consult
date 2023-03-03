@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Eliana-consult</title>
+    <title>Eliana-Consult</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -56,7 +56,7 @@
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-7 ftco-animate mb-md-5">
           	<span class="subheading">{{config('app.name')}}</span>
-            <h1 class="mb-4">Welcome to Eliana-consult</h1>
+            <h1 class="mb-4">Welcome to Eliana-Consult</h1>
             <p><a href="#" class="btn btn-primary px-4 py-3 mt-3">Our Services</a></p>
           </div>
         </div>
@@ -82,7 +82,7 @@
 				<div class="row d-flex no-gutters align-items-stretch consult-wrap">
 					<div class="col-md-5 wrap-about align-items-stretch d-flex">
 						<div class="ftco-animate bg-primary align-self-stretch px-4 py-5 w-100">
-							<h2 class="heading-white mb-4">Request a Service</h2>
+							<h2 class="heading-white mb-4">Request For a Service</h2>
 							<form action="{{route('account.referSomeone_public')}}" method="POST" enctype="multipart/form-data">
 		    				@csrf
 							<div class="form-group">
@@ -155,21 +155,24 @@ $services = \App\Models\CompanyCategory::get();
 				<br>
 					<div class="col-md-7 wrap-about ftco-animate align-items-stretch d-flex">
 						<div class="bg-white p-5">
-							<h2 class="mb-4">Eliana-consult<br></h2>
+							<h2 class="mb-4">Eliana-Consult<br></h2>
+
+
+<!--First Row Starts here-->
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="services">
 										<div class="icon mt-2 d-flex align-items-center"><span class="flaticon-collaboration"></span></div>
 										<div class="text media-body">
-											<h3>Taxation </h3>
+											<h3>Tax Consultancy Services </h3>
 											<p>Efficient tax planning, aims in making the process as efficient as possible.</p>
 										</div>
 									</div>
 									<div class="services">
 										<div class="icon mt-2"><span class="flaticon-analysis"></span></div>
 										<div class="text media-body">
-											<h3>Audit</h3>
-											<p>Advisory in Internal Audits and Statutory Audits.</p>
+											<h3>Accounting & Bookkeeping Services</h3>
+											<p>Our accounting department carries the most common of the versions of Pastel.</p>
 										</div>
 									</div>
 								</div>
@@ -179,19 +182,58 @@ $services = \App\Models\CompanyCategory::get();
 									<div class="services">
 										<div class="icon mt-2"><span class="flaticon-search-engine"></span></div>
 										<div class="text media-body">
-											<h3>Other Statutory</h3>
-											<p>PAYEE, NAPSA and NHIMA returns and registration.</p>
+											<h3>Assurance – Audits and Independent Reviews</h3>
+											<p>Laying the correct corporate governance foundation for any growing business.</p>
 										</div>
 									</div>
 									<div class="services">
 										<div class="icon mt-2"><span class="flaticon-handshake"></span></div>
 										<div class="text media-body">
-											<h3>Investment Planning</h3>
-											<p>provides investment products, advice, and/or planning to investors.</p>
+											<h3>Company Secretarial Services</h3>
+											<p>Preparation of: Formation and Registration of Companies,Annual returns etc</p>
 										</div>
 									</div>
 								</div>							
 							</div>
+
+<!--First Row Ends here-->
+
+
+<!-- Second row starts here -->   
+
+<div class="row">
+								<div class="col-lg-6">
+									<div class="services">
+										<div class="icon mt-2 d-flex align-items-center"><span class="flaticon-collaboration"></span></div>
+										<div class="text media-body">
+											<h3>Investment Planning </h3>
+											<p>provides investment products, advice, and/or planning to investors.</p>
+										</div>
+									</div>
+									
+								</div>
+
+
+								<div class="col-lg-6">
+									<div class="services">
+										<div class="icon mt-2"><span class="flaticon-search-engine"></span></div>
+										<div class="text media-body">
+											<h3>System DevOps</h3>
+											<p>We help to create the best software and integrate security at all stages, effectively.</p>
+										</div>
+									</div>
+									
+								</div>							
+							</div>
+
+
+
+<!--Second row ends here-->
+
+
+
+
+
 
 
 
